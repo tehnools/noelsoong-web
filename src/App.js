@@ -15,8 +15,9 @@ export const ThemeContext = createContext(Theme)
 function App() {
   return (
     <ThemeContext.Provider>
-    <div className="App">
-    </div>
+      <div className="App">
+        <BioCard />
+      </div>
     </ThemeContext.Provider>
   );
 }
