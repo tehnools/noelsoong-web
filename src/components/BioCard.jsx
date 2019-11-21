@@ -36,10 +36,10 @@ export default function BioCard() {
             <CardMedia className={classes.media} title="noelsoong" image='/static/images/hs.jpg' />
             <CardContent >
                 <Typography color="primary">
-                    <Box className={classes.header} textAlign='left'>
-                        Noel Soong
+                    <Box className={classes.header} textAlign='left' m={0} p={0}>
+                        NOEL SOONG
                     </Box>
-                    <Box className={classes.header2} textAlign='left'>
+                    <Box className={classes.header2} textAlign='left' m={0} p={0}>
                         tehnools
                     </Box>
                 </Typography>

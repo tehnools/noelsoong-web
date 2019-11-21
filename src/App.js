@@ -25,7 +25,7 @@ function App() {
   return (
     <ThemeProvider theme={Theme}>
       <div className="App">
-        <Container>
+        <Container p={2}>
           <BioCard />
         </Container>
       </div>
