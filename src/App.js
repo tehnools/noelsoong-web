@@ -1,24 +1,35 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import './App.css';
 import BioCard from "./components/BioCard";
+import {
+  Container,
+  createMuiTheme,
+  MuiThemeProvider
+} from "@material-ui/core";
+import { ThemeProvider } from '@material-ui/styles';
+import blue from '@material-ui/core/colors/blue';
 
-const Theme = {
-  primary: '',
-  secondary: '',
-  link: {
-    default: this.secondary
-    visited: ''
+
+const Theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#3667c6'
+    },
+    secondary: {
+      main: '#7b9ee2'
+    }
   }
-}
-export const ThemeContext = createContext(Theme)
+})
 
 function App() {
   return (
-    <ThemeContext.Provider>
+    <ThemeProvider theme={Theme}>
       <div className="App">
-        <BioCard />
+        <Container>
+          <BioCard />
+        </Container>
       </div>
-    </ThemeContext.Provider>
+    </ThemeProvider>
   );
 }
 
