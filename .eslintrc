@@ -9,7 +9,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "standard"
+    "standard",
+    "plugin:import/errors",
   ],
   "globals": {
     "Atomics": "readonly",
