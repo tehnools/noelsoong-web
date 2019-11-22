@@ -17,6 +17,17 @@
   color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+svg {
+  padding: 20px;
+}
+rect {
+  fill: #2d578b
+}
+text {
+  fill: white;
+}
+text.yAxis {
+  font-size: 12px;
+  font-family: Helvetica, sans-serif;
+  fill: black;
 }
