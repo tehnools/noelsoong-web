@@ -1,5 +1,6 @@
 import ApolloClient from 'apollo-boost'
 import { InMemoryCache } from 'apollo-cache-inmemory'
+require('dotenv').config()
 
 if(!process.env.GITHUB_TOKEN) {
   console.error('Make sure you configure your token to use Apollo!');
