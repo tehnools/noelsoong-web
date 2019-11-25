@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import './App.css'
 import BioCard from './components/BioCard.jsx'
 import Contributions from './components/Contributions.jsx'
@@ -54,17 +54,13 @@ function App () {
         <AppBar />
         <Container className={classes.root} width={1} height={1} justifyContent='center' spacing={1}>
           <Grid container spacing={1}>
-            <Grid item xs={12} lg={4} md={4} sm={4}>
-              <Suspense fallback={lazyLoader()} >
-                <BioCard />
-              </Suspense>
+            <Grid item xs={12} lg={3} md={4} sm={4}>
+              <BioCard fallback={lazyLoader} />
             </Grid>
-            <Grid item xs={12} lg={10} md={8} sm={8} >
+            <Grid item xs={12} lg={9} md={8} sm={8} >
               <Grid container spacing={1}>
                 <Grid item xs={12} >
-                  <Suspense fallback={lazyLoader()}>
-                    <Contributions />
-                  </Suspense>
+                  <Contributions fallback={lazyLoader} />
                 </Grid>
               </Grid>
             </Grid>
@@ -72,9 +68,7 @@ function App () {
           <Typography className={classes.header3} variant='h3'>
             Repositories
           </Typography>
-          <Suspense fallback={lazyLoader()}>
-            <RepositoryList />
-          </Suspense>
+          <RepositoryList fallback={lazyLoader} />
         </Container>
       </div>
     </ThemeProvider>
