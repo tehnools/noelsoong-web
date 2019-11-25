@@ -104,7 +104,7 @@ export default function RepositoryList (props) {
     fetchToken()
   })
 
-  const { data, loading, error } = useQuery(QUERY_GITHUB_REPOS, { headers: { authorization: token } })
+  const { data, loading, error } = useQuery(QUERY_GITHUB_REPOS, { headers: { Authorization: token } })
 
   if (error) return `Error! ${error}`
 
