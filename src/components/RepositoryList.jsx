@@ -97,7 +97,10 @@ export default function RepositoryList (props) {
     try {
       const response = await fetch('https://serve-token.herokuapp.com/token')
       const body = await response.json()
-      if (body) setToken(body.token)
+      if (body) {
+        setToken(body.token)
+        localStorage.token = body.token
+      }
     } catch (e) { console.error(e) }
   }
   useEffect(() => {
