@@ -48,7 +48,7 @@ export default function Contributions (props) {
     fetchToken()
   })
 
-  const { data, loading, error } = useQuery(QUERY_GITHUB_CONTRIBUTION, { headers: { Authorization: token } })
+  const { data, loading, error } = useQuery(QUERY_GITHUB_CONTRIBUTION, { headers: { Authorization: `Bearer ${token}` } })
 
   if (error) return `Error! ${error}`
 

@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     lineHeight: '1.2rem',
     fontFamily: 'Roboto',
     fontSize: '1rem',
-    justifyXontent: 'center',
+    justifyContent: 'center',
     flexDirection: 'column',
     fontWeight: 300
   },
