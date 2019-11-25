@@ -1,18 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import FetchToken from './api/FetchToken.js'
 import './App.css'
-import BioCard from './components/BioCard.jsx'
-import Contributions from './components/Contributions.jsx'
-import AppBar from './components/AppBar.jsx'
 import {
   Grid,
   createMuiTheme,
   Container,
   Typography
 } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import green from '@material-ui/core/colors/green'
+import BioCard from './components/BioCard.jsx'
+import AppBar from './components/AppBar.jsx'
 import RepositoryList from './components/RepositoryList.jsx'
+import Contributions from './components/Contributions.jsx'
 
 const Theme = createMuiTheme({
   palette: {

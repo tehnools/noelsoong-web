@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
-import {
-  Paper,
-  Typography
-} from '@material-ui/core'
-// import UseQuery from '../apollo/UseQuery'
+import { Paper, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import gql from 'graphql-tag'
+
 const useStyles = makeStyles(theme => ({
   paper: {
     display: 'flex',

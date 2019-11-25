@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import {
   Box,
-  Card,
-  CardContent,
-  CardMedia,
   Grid,
-  makeStyles,
-  Typography
+  makeStyles
 } from '@material-ui/core'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
