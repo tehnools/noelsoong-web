@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
@@ -8,7 +9,11 @@ import { client } from './apollo/client'
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <App />
+    <Router>
+      <Route exact path='/' >
+        <App/>
+      </Route>
+    </Router>
   </ApolloProvider>, document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change

@@ -52,7 +52,7 @@ function App () {
     <ThemeProvider theme={Theme}>
       <div className="App" style={{ textAlign: 'left' }}>
         <AppBar />
-        <Container className={classes.root} width={1} height={1} justifyContent='center' spacing={1}>
+        <Container className={classes.root} width={1} height={1} spacing={1}>
           <Grid container spacing={1}>
             <Grid item xs={12} lg={3} md={4} sm={4}>
               <BioCard fallback={lazyLoader} />
