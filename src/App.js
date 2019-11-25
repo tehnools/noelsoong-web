@@ -49,6 +49,11 @@ const lazyLoader = () => <h1>loading...</h1>
 
 function App () {
   const classes = useStyles()
+
+  useEffect(() => {
+    FetchToken()
+  })
+
   return (
     <ThemeProvider theme={Theme}>
       <div className="App" style={{ textAlign: 'left' }}>
