@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import {
   Box,
-  Chip,
-  Avatar,
-  makeStyles
+  Card,
+  CardContent,
+  CardMedia,
+  Grid,
+  makeStyles,
+  Typography
 } from '@material-ui/core'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
@@ -18,7 +21,8 @@ const QUERY_GITHUB_REPOS = gql`
         nodes{
           owner{
             login,
-            avatarUrl
+            avatarUrl,
+            url
           }
           url
           name
@@ -38,6 +42,9 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap',
     padding: theme.spacing(1)
   },
+  link: {
+    textDecoration: 'none'
+  },
   card: {
     display: 'flex',
     minWidth: 300,
@@ -52,47 +59,30 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-function avatarFactory (src, title) {
-  return (
-    <Avatar src={src} title={title} />
-  )
-}
-
-function colorSelector (lang) {
-  console.log(lang)
-  switch (lang.toLowerCase()) {
-    case 'javascript':
-      return '#3667C6'
-    case 'python':
-      return '#F9B813'
-    case 'dart':
-      return 'EB1E02'
-    default:
-      return 'grey'
-  }
-}
-
-function chipFatory (rep) {
-  const color = colorSelector(rep.primaryLanguage.name)
-  console.log(rep)
-  return <Chip
-    key={rep}
-    label={rep.name}
-    href={rep.url}
-    style={{
-      color: 'white',
-      backgroundColor: color
-    }}
-    avatar={avatarFactory(rep.owner.avatarUrl, rep.owner.login)}
-    clickable
-  />
+function repoFactory (rep, { classes }) {
+  return <Grid item key={JSON.stringify(rep)}>
+    <Card className={classes.card} >
+      <CardContent>
+        <Typography variant='h6' color='primary' >
+          <a className={classes.link} href={rep.url}>
+            {rep.name}
+          </a>
+        </Typography>
+        <Typography variant='h7' color='secondary' >
+          <a className={classes.link} href={rep.owner.url} >
+            {rep.owner.login}
+          </a>
+        </Typography>
+        <CardMedia className={classes.gitIcon} href={rep.owner.url} image={rep.owner.avatarUrl} />
+      </CardContent>
+    </Card>
+  </Grid>
 }
 
 export default function RepositoryList (props) {
   const classes = useStyles()
   const [token, setToken] = useState(null)
 
-  // const sortByLength = (a, b) => a.name.length < b.name.length
   const fetchToken = async () => {
     try {
       const response = await fetch('https://serve-token.herokuapp.com/token')
@@ -106,15 +96,17 @@ export default function RepositoryList (props) {
   useEffect(() => {
     fetchToken()
   })
-
   const { data, loading, error } = useQuery(QUERY_GITHUB_REPOS, { headers: { Authorization: token } })
-
   if (error) return `Error! ${error}`
-
   return (
     <Box className={classes.root}>
       {
-        loading ? props.fallback() : data.user.repositories.nodes.map(chipFatory)
+        loading ? props.fallback()
+          : <Grid container col={2}>
+            {data.user.repositories.nodes.map(rep => {
+              return repoFactory(rep, { classes })
+            })}
+          </Grid>
       }
     </Box>
   )
