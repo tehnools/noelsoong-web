@@ -16,18 +16,3 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-svg {
-  padding: 20px;
-}
-rect {
-  fill: #2d578b
-}
-text {
-  fill: white;
-}
-text.yAxis {
-  font-size: 12px;
-  font-family: Helvetica, sans-serif;
-  fill: black;
-}
