@@ -15,13 +15,18 @@ const useStyles = makeStyles(theme => ({
   card: {
     display: 'flex',
     minWidth: 300,
+    padding: theme.spacing(2),
     border: '1px solid #e6e6e6',
     marginBottom: theme.spacing(1),
     marginRight: theme.spacing(1)
   },
+  content: {
+    flex: '1 0 auto',
+    padding: 0
+  },
   gitIcon: {
-    height: 50,
-    width: 50
+    height: 30,
+    width: 30
   }
 }))
 
@@ -29,7 +34,7 @@ export default function RepositoryCard ({ repo }) {
   const classes = useStyles()
   return <Grid item >
     <Card className={classes.card} >
-      <CardContent>
+      <CardContent className={classes.content} >
         <Typography variant='h6' color='primary' >
           <a className={classes.link} href={repo.url}>
             {repo.name}
@@ -43,8 +48,8 @@ export default function RepositoryCard ({ repo }) {
         <Typography variant='subtitle2' color='textSecondary'>
           {repo.primaryLanguage.name}
         </Typography>
-        <CardMedia className={classes.gitIcon} href={repo.owner.url} image={repo.owner.avatarUrl} />
       </CardContent>
+      <CardMedia className={classes.gitIcon} href={repo.owner.url} image={repo.owner.avatarUrl} />
     </Card>
   </Grid>
 }
