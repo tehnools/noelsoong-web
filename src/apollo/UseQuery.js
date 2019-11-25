@@ -1,6 +1,6 @@
 import { client } from '../apollo/client'
 
-const useQuery = (query, options) => {
+const UseQuery = async (query, options) => {
   try {
     return { data: client.readQuery({ query, ...options }) }
   } catch (promise) {
@@ -9,4 +9,4 @@ const useQuery = (query, options) => {
   }
 }
 
-export default useQuery
+export default UseQuery
