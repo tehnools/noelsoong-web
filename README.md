@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Design Spec
+Current Design speck is on [figma](https://www.figma.com/file/lg7bcoW8NUtIiG7r7E7ela/Noel-Soong).
+
 ## Available Scripts
 
 In the project directory, you can run:
