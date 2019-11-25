@@ -1,14 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Box,
   Chip,
   Avatar,
-  Link,
-  CardContent,
-  Typography,
   makeStyles
 } from '@material-ui/core'
-import UseQuery from '../apollo/UseQuery'
+import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 
 const QUERY_GITHUB_REPOS = gql`
@@ -77,6 +74,7 @@ function colorSelector (lang) {
 
 function chipFatory (rep) {
   const color = colorSelector(rep.primaryLanguage.name)
+  console.log(rep)
   return <Chip
     key={rep}
     label={rep.name}
@@ -90,15 +88,30 @@ function chipFatory (rep) {
   />
 }
 
-export default function RepositoryList () {
-  const { data } = UseQuery(QUERY_GITHUB_REPOS)
+export default function RepositoryList (props) {
   const classes = useStyles()
-  const sortByLength = (a, b) => a.name.length < b.name.length
-  const repos = data.user.repositories.nodes.sort(sortByLength)
+  const [token, setToken] = useState(null)
+
+  // const sortByLength = (a, b) => a.name.length < b.name.length
+  const fetchToken = async () => {
+    try {
+      const response = await fetch('https://serve-token.herokuapp.com/token')
+      const body = await response.json()
+      if (body) setToken(body.token)
+    } catch (e) { console.error(e) }
+  }
+  useEffect(() => {
+    fetchToken()
+  })
+
+  const { data, loading, error } = useQuery(QUERY_GITHUB_REPOS, { headers: { authorization: token } })
+
+  if (error) return `Error! ${error}`
+
   return (
     <Box className={classes.root}>
       {
-        repos.map(chipFatory)
+        loading ? props.fallback() : data.user.repositories.nodes.map(chipFatory)
       }
     </Box>
   )

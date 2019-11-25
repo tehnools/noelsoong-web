@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useQuery } from '@apollo/react-hooks'
 import {
   Paper,
   Typography
 } from '@material-ui/core'
-import UseQuery from '../apollo/UseQuery'
+// import UseQuery from '../apollo/UseQuery'
 import { makeStyles } from '@material-ui/core/styles'
 import gql from 'graphql-tag'
 const useStyles = makeStyles(theme => ({
@@ -30,16 +31,32 @@ const QUERY_GITHUB_CONTRIBUTION = gql`
 }
 `
 
-export default function Contributions () {
+export default function Contributions (props) {
   const classes = useStyles()
-  const { data } = UseQuery(QUERY_GITHUB_CONTRIBUTION)
+  const [token, setToken] = useState(null)
+  const fetchToken = async () => {
+    try {
+      const response = await fetch('https://serve-token.herokuapp.com/token')
+      const body = await response.json()
+      if (body) setToken(body.token)
+    } catch (e) { console.error(e) }
+  }
+  useEffect(() => {
+    fetchToken()
+  })
+
+  const { data, loading, error } = useQuery(QUERY_GITHUB_CONTRIBUTION, { headers: { authorization: token } })
+
+  if (error) return `Error! ${error}`
+
   return (
     <Paper className={classes.paper}>
-      <Typography variant="h1" color="primary">
-        {data.user.contributionsCollection.contributionCalendar.totalContributions}
-      </Typography>
+      {loading ? props.fallback()
+        : <Typography variant="h1" color="primary">
+          {data && data.user.contributionsCollection.contributionCalendar.totalContributions}
+        </Typography>}
       <Typography component="p">
-         Total Contributions
+        Total Contributions
       </Typography>
     </Paper>
   )
