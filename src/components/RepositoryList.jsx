@@ -7,6 +7,7 @@ import {
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 
+import RepositoryCard from './RepositoryCard'
 const QUERY_GITHUB_REPOS = gql`
 {
   viewer {
@@ -99,9 +100,7 @@ export default function RepositoryList (props) {
       {
         loading ? props.fallback()
           : <Grid container col={2}>
-            {data.user.repositories.nodes.map(rep => {
-              return repoFactory(rep, { classes })
-            })}
+            {data && data.user.repositories.nodes.map(repo => <RepositoryCard key={JSON.stringify(repo)} repo={repo} />)}
           </Grid>
       }
     </Box>
