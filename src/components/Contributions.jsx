@@ -30,22 +30,7 @@ const QUERY_GITHUB_CONTRIBUTION = gql`
 
 export default function Contributions (props) {
   const classes = useStyles()
-  const [token, setToken] = useState(null)
-  const fetchToken = async () => {
-    try {
-      const response = await fetch('https://serve-token.herokuapp.com/token')
-      const body = await response.json()
-      if (body) {
-        setToken(body.token)
-        localStorage.token = body.token
-      }
-    } catch (e) { console.error(e) }
-  }
-  useEffect(() => {
-    fetchToken()
-  })
-
-  const { data, loading, error } = useQuery(QUERY_GITHUB_CONTRIBUTION, { headers: { Authorization: `Bearer ${token}` } })
+  const { data, loading, error } = useQuery(QUERY_GITHUB_CONTRIBUTION)
 
   if (error) return `Error! ${error}`
 
