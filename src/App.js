@@ -6,6 +6,7 @@ import {
   Container,
   Typography
 } from '@material-ui/core'
+import { Redirect } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/styles'
 import { makeStyles } from '@material-ui/core/styles'
 import green from '@material-ui/core/colors/green'
@@ -48,34 +49,31 @@ const lazyLoader = () => <h1>loading...</h1>
 
 function App () {
   const classes = useStyles()
-
-  // useEffect(() => {
-  //   FetchToken()
-  // })
-
   return (
     <ThemeProvider theme={Theme}>
-      <div className="App" style={{ textAlign: 'left' }}>
-        <AppBar />
-        <Container className={classes.root} width={1} height={1} spacing={1}>
-          <Grid container spacing={1}>
-            <Grid item xs={12} lg={3} md={4} sm={4}>
-              <BioCard fallback={lazyLoader} />
-            </Grid>
-            <Grid item xs={12} lg={9} md={8} sm={8} >
-              <Grid container spacing={1}>
-                <Grid item xs={12} >
-                  <Contributions fallback={lazyLoader} />
+      {localStorage.token
+        ? <div className="App" style={{ textAlign: 'left' }}>
+          <AppBar />
+          <Container className={classes.root} width={1} height={1} spacing={1}>
+            <Grid container spacing={1}>
+              <Grid item xs={12} lg={3} md={4} sm={4}>
+                <BioCard fallback={lazyLoader} />
+              </Grid>
+              <Grid item xs={12} lg={9} md={8} sm={8} >
+                <Grid container spacing={1}>
+                  <Grid item xs={12} >
+                    <Contributions fallback={lazyLoader} />
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
-          </Grid>
-          <Typography className={classes.header3} variant='h3'>
+            <Typography className={classes.header3} variant='h3'>
             Repositories
-          </Typography>
-          <RepositoryList fallback={lazyLoader} />
-        </Container>
-      </div>
+            </Typography>
+            <RepositoryList fallback={lazyLoader} />
+          </Container>
+        </div>
+        : <Redirect to='/' />}
     </ThemeProvider>
   )
 }
