@@ -4,8 +4,11 @@ const FetchToken = async () => {
     const body = await response.json()
     if (body) {
       localStorage.token = body.token
+      return Promise.resolve({ token: body.token })
     }
-  } catch (e) { console.error(e) }
+  } catch (e) {
+    return Promise.reject(e)
+  }
 }
 
 export default FetchToken

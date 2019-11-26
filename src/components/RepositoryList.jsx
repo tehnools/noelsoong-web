@@ -7,7 +7,7 @@ import {
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 
-import RepositoryCard from './RepositoryCard'
+import RepositoryCard from './RepositoryCard.jsx'
 
 const QUERY_GITHUB_REPOS = gql`
 {

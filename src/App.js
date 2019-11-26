@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import FetchToken from './api/FetchToken.js'
+import React from 'react'
 import './App.css'
 import {
   Grid,
@@ -50,9 +49,9 @@ const lazyLoader = () => <h1>loading...</h1>
 function App () {
   const classes = useStyles()
 
-  useEffect(() => {
-    FetchToken()
-  })
+  // useEffect(() => {
+  //   FetchToken()
+  // })
 
   return (
     <ThemeProvider theme={Theme}>
