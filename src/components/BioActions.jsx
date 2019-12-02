@@ -1,5 +1,6 @@
 import React from 'react'
-import GitHubIcon from './icons/GithubIcon.jsx'
+import LinkedInIcon from '@material-ui/icons/LinkedIn'
+import GitHubIcon from '@material-ui/icons/GitHub'
 
 import {
   CardActions,
@@ -10,43 +11,52 @@ import {
 
 const useStyles = makeStyles(theme => ({
   header: {
-    fontFamily: 'Roboto',
-    fontSize: '2rem',
     fontWeight: 700,
     lineHeight: '2.1rem'
   },
   header2: {
-    fontFamily: 'Roboto',
-    fontSize: '1.7rem',
     lineHeight: '2rem',
     fontWeight: 300
   },
   location: {
     marginTop: '1rem',
     lineHeight: '1.2rem',
-    fontFamily: 'Roboto',
-    fontSize: '1rem',
     justifyContent: 'center',
     flexDirection: 'column',
     fontWeight: 300
-  },
-  media: {
-    width: '100%',
-    height: 325
   },
   cardContent: {
     display: 'flex',
     flexAlign: 'start'
   },
   buttonActions: {
+    display: 'block',
     padding: 0,
     marginTop: '1rem'
+  },
+  button: {
+    marginTop: '0.5em'
   },
   buttonThird: {
     backgroundColor: theme.palette.third.main,
     color: 'white',
-    marginLeft: 0,
-    marginBottom: theme.spacing(1)
+    '&:hover': {
+      color: theme.palette.third.main
+    }
+  },
+  icon: {
+    fontSize: '1.5em',
+    marginRight: '0.5rem'
+  },
+  box: {
+    height: 'inherit',
+    width: 'inherit',
+    display: 'flex',
+    padding: '0.25rem 0 0.25rem 0',
+    lineHeight: '1rem',
+    fontFamily: 'Roboto',
+    fontSize: '1rem',
+    fontWeight: 300
   }
 }))
 
@@ -54,26 +64,28 @@ export default function BioActions () {
   const classes = useStyles()
   return (
     <CardActions className={classes.buttonActions}>
-      <Box m={0} p={0}>
+      <Box m={0} p={0} >
         <Button
-          className={classes.buttonThird}
+          className={`${classes.button} ${classes.buttonThird}`}
           color='default'
           variant='contained'
           size='medium'
+          startIcon={<GitHubIcon/>}
           href='https://github.com/tehnools'
           fullWidth
         >
-          <GitHubIcon/>
-            GitHub
+          GitHub
         </Button>
         <Button
+          className={`${classes.button}`}
           variant="contained"
           color='primary'
           size='medium'
+          startIcon={<LinkedInIcon />}
           href='https://www.linkedin.com/in/noel-soong/'
           fullWidth
         >
-            LinkedIn
+          LinkedIn
         </Button>
       </Box>
     </CardActions>

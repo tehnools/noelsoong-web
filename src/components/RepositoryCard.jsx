@@ -3,6 +3,7 @@ import {
   makeStyles,
   Grid,
   Card,
+  Link,
   CardContent,
   CardMedia,
   Typography
@@ -10,15 +11,18 @@ import {
 
 const useStyles = makeStyles(theme => ({
   link: {
-    textDecoration: 'none'
+    textDecoration: 'none',
+    '&:visited': {
+      color: theme.palette.secondary.main
+    },
+    '&:hover': {
+      color: theme.palette.secondary.light
+    }
   },
   card: {
     display: 'flex',
-    minWidth: 300,
-    padding: theme.spacing(2),
-    border: '1px solid #e6e6e6',
-    marginBottom: theme.spacing(1),
-    marginRight: theme.spacing(1)
+    minWidth: 250,
+    padding: theme.spacing(2)
   },
   content: {
     flex: '1 0 auto',
@@ -49,7 +53,9 @@ export default function RepositoryCard ({ repo }) {
           {repo.primaryLanguage.name}
         </Typography>
       </CardContent>
-      <CardMedia className={classes.gitIcon} href={repo.owner.url} image={repo.owner.avatarUrl} />
+      <Link href={repo.owner.url}>
+        <CardMedia className={classes.gitIcon} image={repo.owner.avatarUrl} />
+      </Link>
     </Card>
   </Grid>
 }

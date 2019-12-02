@@ -8,32 +8,48 @@ import {
 } from '@material-ui/core'
 import { Redirect } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/styles'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, responsiveFontSizes } from '@material-ui/core/styles'
 import green from '@material-ui/core/colors/green'
 import BioCard from './components/BioCard.jsx'
 import AppBar from './components/AppBar.jsx'
 import RepositoryList from './components/RepositoryList.jsx'
 import Contributions from './components/Contributions.jsx'
 
-const Theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#3667c6'
+const Theme = responsiveFontSizes(
+  createMuiTheme({
+    text: {
+      h1: { fontFamily: 'Roboto' },
+      h2: { fontFamily: 'Roboto' },
+      h3: { fontFamily: 'Roboto' },
+      h4: { fontFamily: 'Roboto' },
+      h5: { fontFamily: 'Roboto' },
+      p: { fontFamily: 'Roboto' },
+      span: { fontFamily: 'Roboto' },
+      a: { fontFamily: 'Roboto' }
     },
-    secondary: {
-      main: '#1966FB'
-    },
-    success: {
-      main: green[500]
-    },
-    third: {
-      main: '#323232',
-      dark: '#323232',
-      light: '#929292',
-      contrastText: '#FFFFFF'
+    palette: {
+      primary: {
+        main: '#3667c6',
+        light: '#7c94c4',
+        dark: '#14274d'
+      },
+      secondary: {
+        main: '#1966FB',
+        light: '#75a3fa',
+        dark: '#0a2b69'
+      },
+      success: {
+        main: green[500]
+      },
+      third: {
+        main: '#323232',
+        dark: '#323232',
+        light: '#929292',
+        contrastText: '#FFFFFF'
+      }
     }
-  }
-})
+  })
+)
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -41,7 +57,7 @@ const useStyles = makeStyles(theme => ({
   },
   header3: {
     marginTop: theme.spacing(2),
-    color: theme.palette.third
+    color: '#323232'
   }
 }))
 
@@ -67,7 +83,7 @@ function App () {
                 </Grid>
               </Grid>
             </Grid>
-            <Typography className={classes.header3} variant='h3'>
+            <Typography variant='h3' className={classes.header3}>
             Repositories
             </Typography>
             <RepositoryList fallback={lazyLoader} />

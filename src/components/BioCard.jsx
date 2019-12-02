@@ -1,35 +1,40 @@
 import React from 'react'
 import {
   Card,
-  CardMedia,
   CardContent,
   makeStyles,
   Typography,
   Box
 } from '@material-ui/core'
-import BioActions from './BioActions'
+import BioActions from './BioActions.jsx'
 import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined'
+import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined'
+
 const useStyles = makeStyles(theme => ({
   header: {
     fontFamily: 'Roboto',
-    fontSize: '2rem',
-    fontWeight: 700,
-    lineHeight: '2.1rem'
+    fontWeight: 700
   },
   header2: {
     fontFamily: 'Roboto',
-    fontSize: '1.7rem',
-    lineHeight: '2rem',
+    lineHeight: '1em',
     fontWeight: 300
   },
+  contactDetails: {
+    margin: '0.75rem 0 0 0'
+  },
   location: {
-    marginTop: '1rem',
-    lineHeight: '1.2rem',
+    display: 'flex',
+    padding: '0.25rem 0 0.25rem 0',
+    lineHeight: '1rem',
     fontFamily: 'Roboto',
     fontSize: '1rem',
-    justifyXontent: 'center',
-    flexDirection: 'column',
     fontWeight: 300
+  },
+  icon: {
+    fontSize: '1rem',
+    color: 'grey',
+    marginRight: '0.5rem'
   },
   media: {
     width: '100%',
@@ -40,6 +45,8 @@ const useStyles = makeStyles(theme => ({
     flexAlign: 'start'
   },
   buttonActions: {
+    display: 'flex',
+    flexWrap: 'wrap',
     padding: 0,
     marginTop: '1rem'
   },
@@ -55,24 +62,23 @@ export default function BioCard () {
   const classes = useStyles()
   return (
     <Card className={classes.card} shadow={1} >
-      <CardMedia
-        className={classes.media}
-        title="noelsoong"
-        image='/static/images/hs.jpg'
-      />
       <CardContent>
-        <Typography color="primary" component='div'>
+        <Typography variant='h2' color="primary" component='div'>
           <Box className={classes.header} textAlign='left'>
               NOEL SOONG
           </Box>
+        </Typography>
+        <Typography variant='h3' color="primary" component='div'>
           <Box className={classes.header2} textAlign='left'>
               tehnools
           </Box>
         </Typography>
-        <Typography component='div'>
+        <Typography component='div' className={classes.contactDetails}>
           <Box className={classes.location} textAlign='left'>
-            <RoomOutlinedIcon style={{ fontSize: '1rem', color: 'grey' }} /> Auckland, New Zealand
+            <RoomOutlinedIcon className={classes.icon} /> Auckland, New Zealand
           </Box>
+          <Box className={classes.location} textAlign='left'>
+            <EmailOutlinedIcon className={classes.icon} /> noelsoongdev@gmail.com</Box>
         </Typography>
         <BioActions />
       </CardContent>

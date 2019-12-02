@@ -40,8 +40,8 @@ export default function Contributions (props) {
         : <Typography variant="h1" color="primary">
           {data && data.user.contributionsCollection.contributionCalendar.totalContributions}
         </Typography>}
-      <Typography component="p">
-        Total Contributions
+      <Typography component="p" >
+        Total Contributions this year
       </Typography>
     </Paper>
   )
