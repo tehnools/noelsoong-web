@@ -50,10 +50,8 @@ export default function RepositoryList (props) {
       : <Box className={classes.root}>
         <Grid container
           alignItems='flex-start'
-          justifyContent='flex-start'
           wrap='wrap'
           xl='auto'
-          lg='auto'
           spacing={1}
         >
           {data && data.user.repositories.nodes.map(repo => <RepositoryCard key={JSON.stringify(repo)} repo={repo} />)}
