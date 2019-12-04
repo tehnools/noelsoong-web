@@ -10,31 +10,31 @@ import {
 } from '@material-ui/core'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-
 import RepositoryCard from './RepositoryCard.jsx'
 
 const QUERY_GITHUB_REPOS = gql`
 {
-  viewer {
-    login
-  }
   user(login: "tehnools") {
-    repositories(first: 9,orderBy: {field: STARGAZERS, direction: DESC }){
-        nodes{
+    pinnableItems(first: 6) {
+      nodes {
+        ... on Repository {
+          name
+          openGraphImageUrl
+          primaryLanguage {
+            color
+            name
+          }
           owner{
-            login,
-            avatarUrl,
+            login
             url
           }
           url
-          name
-          primaryLanguage{
-            name
-          }
         }
       }
+    }
   }
 }
+
 `
 
 const useStyles = makeStyles(theme => ({
@@ -57,11 +57,11 @@ const useStyles = makeStyles(theme => ({
 
 export default function RepositoryList (props) {
   const classes = useStyles()
-  const [hide, setHide] = React.useState(true)
+  const [checked, setChecked] = React.useState(true)
   const { data, loading, error } = useQuery(QUERY_GITHUB_REPOS)
 
-  const handleCheck = () => {
-    setHide(prev => !prev)
+  const handleChecked = () => {
+    setChecked(prev => !prev)
   }
 
   if (error) {
@@ -74,11 +74,11 @@ export default function RepositoryList (props) {
         <Typography
           variant='h3'
           className={classes.header3}>
-            Repositories
+            Pinned Repos
           <FormControlLabel
             className={classes.formControl}
-            control={<Switch checked={!hide}
-              onChange={handleCheck} />}
+            control={<Switch checked={!checked}
+              onChange={handleChecked} />}
             label='Hide'
           />
         </Typography>
@@ -86,18 +86,36 @@ export default function RepositoryList (props) {
       {
         loading && data === null
           ? props.fallback()
-          : <Collapse in={hide}>
-            <Box className={classes.root}>
-              <Grid container
-                alignItems='flex-start'
-                wrap='wrap'
-                xl='auto'
-                spacing={1}
-              >
-                {data && data.user.repositories.nodes.map(repo => <RepositoryCard key={JSON.stringify(repo)} repo={repo} />)}
-              </Grid>
-            </Box>
-          </Collapse>
+          : <Box className={classes.root}>
+            <Grid container
+              alignItems='flex-start'
+              wrap='wrap'
+              xl='auto'
+              spacing={1}
+            >
+              {data && data
+                .user
+                .pinnableItems
+                .nodes
+                .map(repo => <Grid
+                  key={JSON.stringify(repo)}
+                  item
+                >
+                  <Collapse
+                    mountOnEnter
+                    unmountOnExit
+                    in={checked}
+                    style={{ transformOrigin: '0 0 0' }}
+                    {...(checked ? { timeout: 1000 } : {})}
+                  >
+                    <RepositoryCard repo={repo}/>
+                  </Collapse>
+                </Grid>
+
+                )}
+            </Grid>
+          </Box>
+
       }
     </>
   )
