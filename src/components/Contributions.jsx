@@ -37,7 +37,7 @@ export default function Contributions (props) {
   return (
     <Paper className={classes.paper}>
       {loading ? props.fallback()
-        : <Typography variant="h1" color="primary">
+        : <Typography variant="h1" color="primary" style={{ fontWeight: 700 }}>
           {data && data.user.contributionsCollection.contributionCalendar.totalContributions}
         </Typography>}
       <Typography component="p" >
