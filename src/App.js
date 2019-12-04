@@ -4,7 +4,8 @@ import {
   Grid,
   createMuiTheme,
   Box,
-  Container
+  Container,
+  CircularProgress
 } from '@material-ui/core'
 import { Redirect } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/styles'
@@ -79,7 +80,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const lazyLoader = () => <h1>loading...</h1>
+const lazyLoader = () => <CircularProgress style={{ justifySelf: 'center' }}/>
 
 function App () {
   const classes = useStyles()
