@@ -35,9 +35,7 @@ export default function Project (props) {
     github
   } = props.project
   return (
-    <GridListTile
-      style={{ height: 'auto', overflow: 'hidden' }}
-    >
+    <GridListTile>
       <Link href={link}>
         <img
           className={classes.tileImage}
