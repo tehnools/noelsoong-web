@@ -19,16 +19,27 @@ const useStyles = makeStyles(theme => ({
       color: theme.palette.secondary.light
     }
   },
+  mainLink: {
+    color: theme.palette.primary.main,
+    textDecoration: 'none',
+    fontWeight: 700,
+    '&:visited': {
+      color: theme.palette.primary.main
+    },
+    '&:hover': {
+      color: theme.palette.primary.light
+    }
+  },
   card: {
     display: 'flex',
-    minWidth: 250,
+    minWidth: 260,
     padding: theme.spacing(2)
   },
   content: {
     flex: '1 0 auto',
     padding: 0
   },
-  gitIcon: {
+  gitAvatar: {
     height: 30,
     width: 30
   }
@@ -40,7 +51,7 @@ export default function RepositoryCard ({ repo }) {
     <Card className={classes.card} >
       <CardContent className={classes.content} >
         <Typography variant='h6' color='primary' >
-          <a className={classes.link} href={repo.url}>
+          <a className={classes.mainLink} href={repo.url}>
             {repo.name}
           </a>
         </Typography>
@@ -54,7 +65,7 @@ export default function RepositoryCard ({ repo }) {
         </Typography>
       </CardContent>
       <Link href={repo.owner.url}>
-        <CardMedia className={classes.gitIcon} image={repo.owner.avatarUrl} />
+        <CardMedia className={classes.gitAvatar} image={repo.openGraphImageUrl} />
       </Link>
     </Card>
   </Grid>
