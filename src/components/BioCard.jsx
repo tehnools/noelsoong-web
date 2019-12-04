@@ -23,12 +23,12 @@ const useStyles = makeStyles(theme => ({
   contactDetails: {
     margin: '0.75rem 0 0 0'
   },
-  location: {
+  information: {
     display: 'flex',
     padding: '0.25rem 0 0.25rem 0',
     lineHeight: '1rem',
     fontFamily: 'Roboto',
-    fontSize: '1rem',
+    textOverflow: 'wrap',
     fontWeight: 300
   },
   icon: {
@@ -73,11 +73,11 @@ export default function BioCard () {
               tehnools
           </Box>
         </Typography>
-        <Typography component='div' className={classes.contactDetails}>
-          <Box className={classes.location} textAlign='left'>
+        <Typography component='div' variant='body1' className={classes.contactDetails}>
+          <Box className={classes.information} textAlign='left'>
             <RoomOutlinedIcon className={classes.icon} /> Auckland, New Zealand
           </Box>
-          <Box className={classes.location} textAlign='left'>
+          <Box className={classes.information} textAlign='left'>
             <EmailOutlinedIcon className={classes.icon} /> noelsoongdev@gmail.com</Box>
         </Typography>
         <BioActions />
