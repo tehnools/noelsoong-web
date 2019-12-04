@@ -83,9 +83,6 @@ function App () {
                 </Grid>
               </Grid>
             </Grid>
-            <Typography variant='h3' className={classes.header3}>
-            Repositories
-            </Typography>
             <RepositoryList fallback={lazyLoader} />
           </Container>
         </div>
