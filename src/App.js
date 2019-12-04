@@ -12,6 +12,7 @@ import { makeStyles, responsiveFontSizes } from '@material-ui/core/styles'
 import green from '@material-ui/core/colors/green'
 import BioCard from './components/BioCard.jsx'
 import AppBar from './components/AppBar.jsx'
+import Projects from './components/Projects.jsx'
 import RepositoryList from './components/RepositoryList.jsx'
 import Contributions from './components/Contributions.jsx'
 
@@ -62,14 +63,14 @@ const useStyles = makeStyles(theme => ({
   mainHeader: {
     position: 'absolute',
     zIndex: 1,
-    width: '100vw',
+    width: '100%',
     height: '60vh',
     backgroundColor: theme.palette.primary.main
   },
   mainHeaderImage: {
     position: 'relative',
     zIndex: 2,
-    width: '100vw',
+    width: '100%',
     height: 'inherit',
     backgroundImage: `url(${background})`,
     backgroundSize: 'cover',
@@ -93,10 +94,10 @@ function App () {
           </Box>
           <Container className={classes.root} width={1} height={1} spacing={1}>
             <Grid className={classes.profile} container spacing={1}>
-              <Grid item xs={12} lg={3} md={4} sm={4}>
+              <Grid item xs={12} lg={3} md={4} sm={5}>
                 <BioCard fallback={lazyLoader} />
               </Grid>
-              <Grid item xs={12} lg={9} md={8} sm={8} >
+              <Grid item xs={12} lg={9} md={8} sm={7} >
                 <Grid container spacing={1}>
                   <Grid item xs={12} >
                     <Contributions fallback={lazyLoader} />
@@ -104,6 +105,7 @@ function App () {
                 </Grid>
               </Grid>
             </Grid>
+            <Projects />
             <RepositoryList fallback={lazyLoader} />
           </Container>
         </div>
