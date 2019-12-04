@@ -1,18 +1,96 @@
 import React from 'react'
+import withWidth, { isWidthUp } from '@material-ui/core/withWidth'
+import {
+  Box,
+  Typography,
+  makeStyles,
+  GridList
+} from '@material-ui/core'
+import Project from './Project.jsx'
 
 const projects = [
   {
-    name: 'openlawnz',
-    img: 'https://previews.dropbox.com/p/thumb/AAoor26IZcT1LFK4fPIx34SIkl3rUY_eLTlYXvTJfBOg8chTwozRZu_7pirgKW2TSgxu1MthmQy41IoaYxNPi6uwZGyvNxUzhC7XdelM3SqQji2Sxq4pEbBAD4OxjR93ipM6eYypQfhb9mUgyrKvOgMujXdcNEpjXfpOwxAZuk6ZRdGBjCc5psNFU0TB5k9Owp685x4mn6SmIEXHVqkI0dXpK7K59aBCkUXK1LzSv9Rd1uPy8ihP2bXBCoB-73lNP_OeVrLAEakyL2V-_J_3iqWRX5xza880dnTgY8ophCaCXgUEXfzqZ-tPXwMr3XEvUldEkHk_KUYOqt2VCQHIjiDP/p.png?fv_content=true&size_mode=5',
-    link: '',
-    github: ''
+    name: 'Openlaw NZ',
+    description: 'Openlaw NZ is a one stop shop for all NZ law.',
+    imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/openlawnz.png',
+    link: 'https://www.openlaw.nz/',
+    github: 'https://github.com/openlawnz/openlawnz-web'
+  },
+  {
+    name: 'Swipable Cards',
+    description: 'A Component that handles swipe events.',
+    imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/swipablecards.png',
+    link: 'https://csb-dm1kh.netlify.com/',
+    github: 'https://github.com/tehnools/swipable-cards'
+  },
+  {
+    name: 'Majestic Travels',
+    description: 'Majestic Sights Travel provides travel packages and many locations in the south island.',
+    imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/majesticsights.png',
+    link: 'https://www.majesticsightstravel.com/',
+    github: 'https://github.com/justinsoong/majesticsights-marketing'
   }
 ]
 
-export default function Projects () {
-  return (
-    <div>
+const useStyles = makeStyles(theme => ({
+  headerBox:
+  {
+    padding: theme.spacing(2),
+    display: 'flex',
+    alignItems: 'center'
+  },
+  header3: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(1),
+    color: theme.palette.third.main
+  },
+  formControl: {
+    float: 'right'
+  }
+}))
 
-    </div>
+function Projects (props) {
+  const classes = useStyles()
+
+  const getGridListCols = () => {
+    const colWidth = props.width
+    if (isWidthUp('xl', colWidth)) {
+      return 4
+    } else if (isWidthUp('lg', colWidth)) {
+      return 3
+    } else if (isWidthUp('md', colWidth)) {
+      return 2
+    }
+
+    return 1
+  }
+
+  return (
+    <>
+      <Box className={classes.headerBox} >
+        <Typography
+          variant='h3'
+          className={classes.header3}>
+        Projects
+
+        </Typography>
+      </Box>
+      <GridList
+        cellHeight={180}
+        cols={getGridListCols()}
+        spacing={1}
+      >
+        {projects
+          .map(
+            project =>
+              <Project
+                key={JSON.stringify(project)}
+                project={project} />
+
+          )}
+      </GridList>
+    </>
   )
 }
+
+export default withWidth()(Projects)
