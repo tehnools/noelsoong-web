@@ -85,7 +85,7 @@ export default function RepositoryList (props) {
         </Typography>
       </Box>
       {
-        loading && data === null
+        loading || data === null
           ? props.fallback()
           : <Box className={classes.root}>
             <Grid container
