@@ -45,8 +45,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   icon: {
-    fontSize: '1.5em',
-    marginRight: '0.5rem'
+    fontSize: '1.5em'
   },
   box: {
     height: 'inherit',
