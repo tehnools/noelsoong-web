@@ -44,6 +44,7 @@ const useStyles = makeStyles(theme => ({
   },
   headerBox:
   {
+    padding: theme.spacing(2),
     display: 'flex'
   },
   header3: {
@@ -51,7 +52,7 @@ const useStyles = makeStyles(theme => ({
     color: '#636363'
   },
   formControl: {
-    marginLeft: theme.spacing(2)
+    paddingLeft: theme.spacing(2)
   }
 }))
 
