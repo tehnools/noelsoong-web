@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   icon: {
     fontSize: '1rem',
     color: 'grey',
-    marginRight: '0.5rem'
+    marginRight: theme.spacing(1)
   },
   media: {
     width: '100%',
