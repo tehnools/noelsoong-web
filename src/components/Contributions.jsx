@@ -1,6 +1,6 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
-import { Paper, Typography } from '@material-ui/core'
+import { Paper, Typography, Box } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import gql from 'graphql-tag'
 
@@ -10,6 +10,13 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     textAlign: 'center'
+  },
+  loaderBox:
+  {
+    display: 'flex',
+    justifyContent: 'center',
+    padding: theme.spacing(2),
+    width: '100%'
   }
 }))
 
@@ -36,7 +43,10 @@ export default function Contributions (props) {
 
   return (
     <Paper className={classes.paper}>
-      {loading ? props.fallback()
+      {loading
+        ? <Box className={classes.loaderBox}>
+          {props.fallback()}
+        </Box>
         : <Typography variant="h1" color="primary" style={{ fontWeight: 700 }}>
           {data && data.user.contributionsCollection.contributionCalendar.totalContributions}
         </Typography>}

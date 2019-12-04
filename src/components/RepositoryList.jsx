@@ -53,6 +53,13 @@ const useStyles = makeStyles(theme => ({
   },
   formControl: {
     paddingLeft: theme.spacing(2)
+  },
+  loaderBox:
+  {
+    display: 'flex',
+    justifyContent: 'center',
+    padding: theme.spacing(2),
+    width: '100%'
   }
 }))
 
@@ -86,7 +93,9 @@ export default function RepositoryList (props) {
       </Box>
       {
         loading || data === null
-          ? props.fallback()
+          ? <Box className={classes.loaderBox}>
+            {props.fallback()}
+          </Box>
           : <Box className={classes.root}>
             <Grid container
               alignItems='flex-start'
