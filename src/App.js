@@ -3,8 +3,8 @@ import './App.css'
 import {
   Grid,
   createMuiTheme,
-  Container,
-  Typography
+  Box,
+  Container
 } from '@material-ui/core'
 import { Redirect } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/styles'
@@ -42,7 +42,7 @@ const Theme = responsiveFontSizes(
         main: green[500]
       },
       third: {
-        main: '#323232',
+        main: '#636363',
         dark: '#323232',
         light: '#929292',
         contrastText: '#FFFFFF'
@@ -51,13 +51,30 @@ const Theme = responsiveFontSizes(
   })
 )
 
+const background = 'nz-mountains.jpg'
+
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: theme.spacing(2)
+    zIndex: 999,
+    top: '35vh',
+    position: 'relative'
   },
-  header3: {
-    marginTop: theme.spacing(2),
-    color: '#323232'
+  mainHeader: {
+    position: 'absolute',
+    zIndex: 1,
+    width: '100vw',
+    height: '60vh',
+    backgroundColor: theme.palette.primary.main
+  },
+  mainHeaderImage: {
+    position: 'relative',
+    zIndex: 2,
+    width: '100vw',
+    height: 'inherit',
+    backgroundImage: `url(${background})`,
+    backgroundSize: 'cover',
+    overflow: 'hidden',
+    opacity: '0.5'
   }
 }))
 
@@ -69,9 +86,13 @@ function App () {
     <ThemeProvider theme={Theme}>
       {localStorage.token
         ? <div className="App" style={{ textAlign: 'left' }}>
-          <AppBar />
+          <AppBar/>
+          <Box className={classes.mainHeader} >
+            <Box className={classes.mainHeaderImage}>
+            </Box>
+          </Box>
           <Container className={classes.root} width={1} height={1} spacing={1}>
-            <Grid container spacing={1}>
+            <Grid className={classes.profile} container spacing={1}>
               <Grid item xs={12} lg={3} md={4} sm={4}>
                 <BioCard fallback={lazyLoader} />
               </Grid>
