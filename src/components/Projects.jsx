@@ -4,7 +4,10 @@ import {
   Box,
   Typography,
   makeStyles,
-  GridList
+  Collapse,
+  FormControlLabel,
+  Switch,
+  Grid
 } from '@material-ui/core'
 import Project from './Project.jsx'
 
@@ -12,23 +15,37 @@ const projects = [
   {
     name: 'Openlaw NZ',
     description: 'Openlaw NZ is a one stop shop for all NZ law.',
-    imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/openlawnz.png',
+    imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/openlawnz.jpg',
     link: 'https://www.openlaw.nz/',
     github: 'https://github.com/openlawnz/openlawnz-web'
   },
   {
     name: 'Swipable Cards',
     description: 'A Component that handles swipe events.',
-    imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/swipablecards.png',
+    imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/swipablecards.jpg',
     link: 'https://csb-dm1kh.netlify.com/',
     github: 'https://github.com/tehnools/swipable-cards'
   },
   {
     name: 'Majestic Travels',
-    description: 'Majestic Sights Travel provides travel packages and many locations in the south island.',
-    imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/majesticsights.png',
+    description: 'Provides travel packages and many locations in the south island.',
+    imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/majesticsights.jpg',
     link: 'https://www.majesticsightstravel.com/',
     github: 'https://github.com/justinsoong/majesticsights-marketing'
+  },
+  {
+    name: 'Google Calculator Clone',
+    description: 'Remake of google calculator',
+    imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/calculator.jpg',
+    link: 'https://tehnools.github.io/calculator/',
+    github: 'https://github.com/tehnools/calculator'
+  },
+  {
+    name: 'Minesweeper',
+    description: 'Simple Minesweeper game',
+    imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/minesweeper.jpg',
+    link: 'https://tehnools.github.io/minesweeper/',
+    github: 'https://github.com/tehnools/minesweeper'
   }
 ]
 
@@ -45,26 +62,16 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.third.main
   },
   formControl: {
-    float: 'right'
+    paddingLeft: theme.spacing(2)
   }
 }))
 
 function Projects (props) {
   const classes = useStyles()
-
-  const getGridListCols = () => {
-    const colWidth = props.width
-    if (isWidthUp('xl', colWidth)) {
-      return 4
-    } else if (isWidthUp('lg', colWidth)) {
-      return 3
-    } else if (isWidthUp('md', colWidth)) {
-      return 2
-    }
-
-    return 1
+  const [checked, setChecked] = React.useState(true)
+  const handleChecked = () => {
+    setChecked(prev => !prev)
   }
-
   return (
     <>
       <Box className={classes.headerBox} >
@@ -72,23 +79,46 @@ function Projects (props) {
           variant='h3'
           className={classes.header3}>
         Projects
-
+          <FormControlLabel
+            className={classes.formControl}
+            control={<Switch checked={!checked}
+              onChange={handleChecked} />}
+            label={checked ? 'Hide' : 'Show'}
+          />
         </Typography>
       </Box>
-      <GridList
-        cellHeight={180}
-        cols={getGridListCols()}
+      <Grid
+        container
+        alignItems='flex-start'
+        wrap='wrap'
+        xl='auto'
+        md={3}
         spacing={1}
       >
         {projects
           .map(
             project =>
-              <Project
+              <Grid
+                item
                 key={JSON.stringify(project)}
-                project={project} />
-
+              >
+                <Collapse
+                  mountOnEnter
+                  unmountOnExit
+                  in={checked}
+                  style={{ transformOrigin: '0 0 0' }}
+                  {...(checked ? { timeout: 1000 } : {})}
+                >
+                  <Grid
+                    item
+                  >
+                    <Project
+                      project={project} />
+                  </Grid>
+                </Collapse>
+              </Grid>
           )}
-      </GridList>
+      </Grid>
     </>
   )
 }

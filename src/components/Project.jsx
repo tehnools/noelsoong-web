@@ -1,7 +1,12 @@
 import React from 'react'
 import {
-  GridListTile,
-  GridListTileBar,
+  Card,
+  CardMedia,
+  CardHeader,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  Typography,
   Link,
   IconButton,
   makeStyles
@@ -10,17 +15,20 @@ import {
 import GitHubIcon from '@material-ui/icons/GitHub'
 
 const useStyles = makeStyles(theme => ({
-  tileImage: {
-    height: '100%',
-    width: 300,
+  media: {
+    height: 300,
+    width: '100%',
     '&:hover': {
-      filter: 'grayscale(80%) blur(3px);',
-      '-web-kit-filter-': 'grayscale(80%) blur(50%)'
+      cursor: 'pointer'
     },
-    transition: 'filter 0.5s'
+    transition: 'filter 0.3s'
   },
   githubIcon: {
     color: 'white'
+  },
+  gridListTileBar: { color: 'white' },
+  content: {
+    height: 100
   }
 })
 )
@@ -35,22 +43,29 @@ export default function Project (props) {
     github
   } = props.project
   return (
-    <GridListTile>
-      <Link href={link}>
-        <img
-          className={classes.tileImage}
-          src={imgUrl}
-          alt={name}
-        />
-      </Link>
-      <GridListTileBar
-        title={<Link href={link} style={{ color: 'white' }}>{name}</Link>}
-        actionIcon={
-          <IconButton href={github}>
-            <GitHubIcon className={classes.githubIcon} />
-          </IconButton>
-        }
+    <Card>
+      <CardHeader
+        title={name}
       />
-    </GridListTile>
+      <CardActionArea
+        href={link}
+      >
+        <CardMedia
+          className={classes.media}
+          image={imgUrl}
+          title={name}
+        />
+      </CardActionArea>
+      <CardContent className={classes.content}>
+        <Typography variant='body1'>
+          {description}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <IconButton href={github}>
+          <GitHubIcon />
+        </IconButton>
+      </CardActions>
+    </Card>
   )
 }
