@@ -101,6 +101,7 @@ export default function RepositoryList (props) {
               alignItems='flex-start'
               wrap='wrap'
               xl='auto'
+              sm={1}
               spacing={1}
             >
               {data && data
