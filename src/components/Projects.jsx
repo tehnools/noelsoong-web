@@ -1,5 +1,5 @@
 import React from 'react'
-import withWidth, { isWidthUp } from '@material-ui/core/withWidth'
+import withWidth from '@material-ui/core/withWidth'
 import {
   Box,
   Typography,
@@ -52,17 +52,15 @@ const projects = [
 const useStyles = makeStyles(theme => ({
   headerBox:
   {
-    padding: theme.spacing(2),
     display: 'flex',
+    justifyContent: 'space-between',
+    padding: theme.spacing(2),
     alignItems: 'center'
   },
   header3: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(1),
     color: theme.palette.third.main
-  },
-  formControl: {
-    paddingLeft: theme.spacing(2)
   }
 }))
 
@@ -79,14 +77,15 @@ function Projects (props) {
           variant='h3'
           className={classes.header3}>
         Projects
-          <FormControlLabel
-            className={classes.formControl}
-            control={<Switch checked={!checked}
-              onChange={handleChecked} />}
-            label={checked ? 'Hide' : 'Show'}
-          />
         </Typography>
+        <FormControlLabel
+          className={classes.formControl}
+          control={<Switch checked={!checked}
+            onChange={handleChecked} />}
+          label={checked ? 'Hide' : 'Show'}
+        />
       </Box>
+      <hr/>
       <Grid
         container
         direction={'row'}
@@ -100,8 +99,8 @@ function Projects (props) {
                 item
                 xs={12}
                 sm={12}
-                lg={3}
-                md={3}
+                lg={4}
+                md={4}
               >
                 <Collapse
                   mountOnEnter

@@ -44,8 +44,10 @@ const useStyles = makeStyles(theme => ({
   },
   headerBox:
   {
+    display: 'flex',
+    justifyContent: 'space-between',
     padding: theme.spacing(2),
-    display: 'flex'
+    alignItems: 'center'
   },
   header3: {
     marginTop: theme.spacing(2),
@@ -83,14 +85,15 @@ export default function RepositoryList (props) {
           variant='h3'
           className={classes.header3}>
             Pinned Repos
-          <FormControlLabel
-            className={classes.formControl}
-            control={<Switch checked={!checked}
-              onChange={handleChecked} />}
-            label={checked ? 'Hide' : 'Show'}
-          />
         </Typography>
+        <FormControlLabel
+          className={classes.formControl}
+          control={<Switch checked={!checked}
+            onChange={handleChecked} />}
+          label={checked ? 'Hide' : 'Show'}
+        />
       </Box>
+      <hr/>
       {
         loading || data === null
           ? <Box className={classes.loaderBox}>
@@ -113,7 +116,7 @@ export default function RepositoryList (props) {
                   xs={12}
                   sm={12}
                   lg={3}
-                  md={3}
+                  md={4}
                 >
                   <Collapse
                     mountOnEnter

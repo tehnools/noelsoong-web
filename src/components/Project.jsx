@@ -7,7 +7,6 @@ import {
   CardActions,
   CardContent,
   Typography,
-  Link,
   IconButton,
   makeStyles
 } from '@material-ui/core'
@@ -15,10 +14,6 @@ import {
 import GitHubIcon from '@material-ui/icons/GitHub'
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    minWidth: 300,
-    maxWidth: 366
-  },
   media: {
     height: 300,
     width: '100%',
