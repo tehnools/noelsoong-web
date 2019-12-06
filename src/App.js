@@ -56,20 +56,19 @@ const Theme = responsiveFontSizes(
 const background = 'nz-mountains.jpg'
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    zIndex: 999,
-    top: '35vh',
-    position: 'relative'
+  profile: {
+    position: 'relative',
+    zIndex: 99,
+    bottom: 200,
+    marginBottom: -200
   },
-  mainHeader: {
-    position: 'absolute',
-    zIndex: 1,
+  mainHeaderImageWrap: {
     width: '100%',
-    height: '60vh',
+    height: '400px',
     backgroundColor: theme.palette.primary.main
   },
   mainHeaderImage: {
-    position: 'relative',
+    position: 'absolute',
     zIndex: 2,
     width: '100%',
     height: 'inherit',
@@ -90,22 +89,26 @@ function App () {
         ? <div className="App" style={{ textAlign: 'left' }}>
           <AppBar/>
           <Box className={classes.mainHeader} >
-            <Box className={classes.mainHeaderImage}>
+            <Box className={classes.mainHeaderImageWrap}>
+              <Box className={classes.mainHeaderImage}>
+              </Box>
             </Box>
-          </Box>
-          <Container className={classes.root} width={1} height={1} spacing={1}>
-            <Grid className={classes.profile} container spacing={1}>
-              <Grid item xs={12} lg={3} md={4} sm={5}>
-                <BioCard fallback={lazyLoader} />
-              </Grid>
-              <Grid item xs={12} lg={9} md={8} sm={7} >
-                <Grid container spacing={1}>
-                  <Grid item xs={12} >
-                    <Contributions fallback={lazyLoader} />
+            <Container>
+              <Grid className={classes.profile} container spacing={1}>
+                <Grid item xs={12} lg={3} md={4} sm={5}>
+                  <BioCard fallback={lazyLoader} />
+                </Grid>
+                <Grid item xs={12} lg={9} md={8} sm={7} >
+                  <Grid container spacing={1}>
+                    <Grid item xs={12} >
+                      <Contributions fallback={lazyLoader} />
+                    </Grid>
                   </Grid>
                 </Grid>
               </Grid>
-            </Grid>
+            </Container>
+          </Box>
+          <Container className={classes.root} width={1} height={1} spacing={1}>
             <Projects />
             <RepositoryList fallback={lazyLoader} />
           </Container>
