@@ -65,8 +65,8 @@ const useStyles = makeStyles(theme => ({
 
 export default function RepositoryList (props) {
   const classes = useStyles()
-  const [checked, setChecked] = React.useState(true)
   const { data, loading, error } = useQuery(QUERY_GITHUB_REPOS)
+  const [checked, setChecked] = React.useState(true)
 
   const handleChecked = () => {
     setChecked(prev => !prev)
@@ -87,7 +87,7 @@ export default function RepositoryList (props) {
             className={classes.formControl}
             control={<Switch checked={!checked}
               onChange={handleChecked} />}
-            label='Hide'
+            label={checked ? 'Hide' : 'Show'}
           />
         </Typography>
       </Box>
