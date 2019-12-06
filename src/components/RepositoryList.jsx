@@ -101,7 +101,6 @@ export default function RepositoryList (props) {
               alignItems='flex-start'
               wrap='wrap'
               xl='auto'
-              sm={1}
               spacing={1}
             >
               {data && data
@@ -111,6 +110,10 @@ export default function RepositoryList (props) {
                 .map(repo => <Grid
                   key={JSON.stringify(repo)}
                   item
+                  xs={12}
+                  sm={12}
+                  lg={3}
+                  md={3}
                 >
                   <Collapse
                     mountOnEnter

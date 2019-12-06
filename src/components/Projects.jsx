@@ -89,20 +89,19 @@ function Projects (props) {
       </Box>
       <Grid
         container
-        alignItems='flex-start'
-        wrap='wrap'
-        xl='auto'
-        sm={1}
-        md={3}
-        lg={2}
+        direction={'row'}
         spacing={1}
       >
         {projects
           .map(
             project =>
               <Grid
-                item
                 key={JSON.stringify(project)}
+                item
+                xs={12}
+                sm={12}
+                lg={3}
+                md={3}
               >
                 <Collapse
                   mountOnEnter
