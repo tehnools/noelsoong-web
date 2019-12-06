@@ -15,6 +15,10 @@ import {
 import GitHubIcon from '@material-ui/icons/GitHub'
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    minWidth: 300,
+    maxWidth: 366
+  },
   media: {
     height: 300,
     width: '100%',
@@ -28,7 +32,8 @@ const useStyles = makeStyles(theme => ({
   },
   gridListTileBar: { color: 'white' },
   content: {
-    height: 100
+    height: 100,
+    wordWrap: 'break-word'
   }
 })
 )
@@ -43,7 +48,9 @@ export default function Project (props) {
     github
   } = props.project
   return (
-    <Card>
+    <Card
+      className={classes.root}
+    >
       <CardHeader
         title={name}
       />
