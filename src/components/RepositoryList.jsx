@@ -63,6 +63,10 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     padding: theme.spacing(2),
     width: '100%'
+  },
+  hr: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(1)
   }
 }))
 
@@ -133,7 +137,7 @@ export default function RepositoryList (props) {
             </Grid>
           </Box>
       }
-      <Divider/>
+      <Divider className={classes.hr}/>
     </>
   )
 }

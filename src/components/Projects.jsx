@@ -62,6 +62,10 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(1),
     color: theme.palette.third.main
+  },
+  hr: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(1)
   }
 }))
 
@@ -119,7 +123,7 @@ function Projects (props) {
               </Grid>
           )}
       </Grid>
-      <Divider/>
+      <Divider className={classes.hr} />
     </>
   )
 }
