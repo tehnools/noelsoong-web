@@ -29,7 +29,7 @@ const projects = [
   },
   {
     name: 'Majestic Travels',
-    description: 'Provides travel packages and many locations in the south island. I have setup a static site to display the information for now but the project will have authorization of users as well as bookings. Plan is to use a tourwriter API',
+    description: 'I have setup a static site to display the information for now but the project will have authorization of users as well as bookings. Plan is to use a tourwriter API',
     imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/majesticsights.jpg',
     link: 'https://www.majesticsightstravel.com/',
     github: 'https://github.com/justinsoong/majesticsights-marketing'
