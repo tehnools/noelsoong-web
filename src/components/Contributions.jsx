@@ -5,11 +5,12 @@ import { makeStyles } from '@material-ui/core/styles'
 import gql from 'graphql-tag'
 
 const useStyles = makeStyles(theme => ({
-  paper: {
+  root: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    textAlign: 'center'
+    textAlign: 'center',
+    height: '100%'
   },
   loaderBox:
   {
@@ -42,7 +43,7 @@ export default function Contributions (props) {
   if (error) return `Error! ${error}`
 
   return (
-    <Paper className={classes.paper}>
+    <Paper className={classes.root}>
       {loading
         ? <Box className={classes.loaderBox}>
           {props.fallback()}

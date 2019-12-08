@@ -99,11 +99,11 @@ function App () {
                   <BioCard fallback={lazyLoader} />
                 </Grid>
                 <Grid item xs={12} lg={9} md={8} sm={7} >
-                  <Grid container spacing={1}>
-                    <Grid item xs={12} >
-                      <Contributions fallback={lazyLoader} />
-                    </Grid>
-                  </Grid>
+                  {/* <Grid container spacing={1}> */}
+                  {/* <Grid item xs={12} > */}
+                  <Contributions fallback={lazyLoader} />
+                  {/* </Grid> */}
+                  {/* </Grid> */}
                 </Grid>
               </Grid>
             </Container>
