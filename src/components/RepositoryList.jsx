@@ -6,6 +6,7 @@ import {
   Typography,
   Collapse,
   FormControlLabel,
+  Divider,
   makeStyles
 } from '@material-ui/core'
 import { useQuery } from '@apollo/react-hooks'
@@ -93,7 +94,6 @@ export default function RepositoryList (props) {
           label={checked ? 'Hide' : 'Show'}
         />
       </Box>
-      <hr/>
       {
         loading || data === null
           ? <Box className={classes.loaderBox}>
@@ -132,8 +132,8 @@ export default function RepositoryList (props) {
                 )}
             </Grid>
           </Box>
-
       }
+      <Divider/>
     </>
   )
 }
