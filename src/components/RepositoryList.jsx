@@ -70,6 +70,24 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
+const GridItem = props => <Grid
+  item
+  xs={12}
+  sm={12}
+  lg={3}
+  md={4}
+>
+  <Collapse
+    mountOnEnter
+    unmountOnExit
+    in={props.checked}
+    style={{ transformOrigin: '0 0 0' }}
+    {...(props.checked ? { timeout: 1000 } : {})}
+  >
+    <RepositoryCard repo={props.repo}/>
+  </Collapse>
+</Grid>
+
 export default function RepositoryList (props) {
   const classes = useStyles()
   const { data, loading, error } = useQuery(QUERY_GITHUB_REPOS)
@@ -114,26 +132,11 @@ export default function RepositoryList (props) {
                 .user
                 .pinnableItems
                 .nodes
-                .map(repo => <Grid
-                  key={JSON.stringify(repo)}
-                  item
-                  xs={12}
-                  sm={12}
-                  lg={3}
-                  md={4}
-                >
-                  <Collapse
-                    mountOnEnter
-                    unmountOnExit
-                    in={checked}
-                    style={{ transformOrigin: '0 0 0' }}
-                    {...(checked ? { timeout: 1000 } : {})}
-                  >
-                    <RepositoryCard repo={repo}/>
-                  </Collapse>
-                </Grid>
-
-                )}
+                .map(repo => <GridItem
+                  key={JSON.stringify(props.repo)}
+                  repo={repo}
+                  checked={checked} />)
+              }
             </Grid>
           </Box>
       }
