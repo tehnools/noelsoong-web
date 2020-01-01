@@ -1,8 +1,6 @@
 import React from 'react'
-import { useQuery } from '@apollo/react-hooks'
 import { Paper, Typography, Box } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import gql from 'graphql-tag'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,39 +19,26 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const QUERY_GITHUB_CONTRIBUTION = gql`
-{
-  viewer {
-    login
-  }
-  user(login: "tehnools") {
-    contributionsCollection {
-      contributionCalendar {
-        totalContributions
-      }
-    }
-  }
-}
-`
-
 export default function Contributions (props) {
   const classes = useStyles()
-  const { data, loading, error } = useQuery(QUERY_GITHUB_CONTRIBUTION)
-
-  if (error) return `Error! ${error}`
-
+  const { data, isLoading, fallback } = props
   return (
     <Paper className={classes.root}>
-      {loading
-        ? <Box className={classes.loaderBox}>
-          {props.fallback()}
-        </Box>
-        : <Typography variant="h1" color="primary" style={{ fontWeight: 700 }}>
-          {data && data.user.contributionsCollection.contributionCalendar.totalContributions}
-        </Typography>}
-      <Typography component="p" >
+
+      {
+        isLoading
+          ? <Box className={classes.loaderBox}>
+            {fallback()}
+          </Box>
+          : <>
+            <Typography variant="h1" color="primary" style={{ fontWeight: 700 }}>
+              {data && data.data.user.contributionsCollection.contributionCalendar.totalContributions}
+            </Typography>
+            <Typography component="p" >
         Total Contributions this year
-      </Typography>
+            </Typography>
+          </>
+      }
     </Paper>
   )
 }

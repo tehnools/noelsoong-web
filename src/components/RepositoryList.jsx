@@ -9,34 +9,7 @@ import {
   Divider,
   makeStyles
 } from '@material-ui/core'
-import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
 import RepositoryCard from './RepositoryCard.jsx'
-
-const QUERY_GITHUB_REPOS = gql`
-{
-  user(login: "tehnools") {
-    pinnableItems(first: 6) {
-      nodes {
-        ... on Repository {
-          name
-          openGraphImageUrl
-          primaryLanguage {
-            color
-            name
-          }
-          owner{
-            login
-            url
-          }
-          url
-        }
-      }
-    }
-  }
-}
-
-`
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -90,15 +63,11 @@ const GridItem = props => <Grid
 
 export default function RepositoryList (props) {
   const classes = useStyles()
-  const { data, loading, error } = useQuery(QUERY_GITHUB_REPOS)
   const [checked, setChecked] = React.useState(true)
+  const { data, isLoading } = props
 
   const handleChecked = () => {
     setChecked(prev => !prev)
-  }
-
-  if (error) {
-    return `Error! ${error}`
   }
 
   return (
@@ -117,10 +86,9 @@ export default function RepositoryList (props) {
         />
       </Box>
       {
-        loading || data === null
-          ? <Box className={classes.loaderBox}>
-            {props.fallback()}
-          </Box>
+        isLoading ? <Box className={classes.loaderBox}>
+          {props.fallback()}
+        </Box>
           : <Box className={classes.root}>
             <Grid container
               alignItems='flex-start'
@@ -128,12 +96,12 @@ export default function RepositoryList (props) {
               xl='auto'
               spacing={1}
             >
-              {data && data
+              {data && data.data
                 .user
                 .pinnableItems
                 .nodes
                 .map(repo => <GridItem
-                  key={JSON.stringify(props.repo)}
+                  key={JSON.stringify(repo)}
                   repo={repo}
                   checked={checked} />)
               }

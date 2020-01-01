@@ -1,5 +1,5 @@
+// External Imports
 import React from 'react'
-import './App.css'
 import {
   Grid,
   createMuiTheme,
@@ -11,11 +11,14 @@ import { Redirect } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/styles'
 import { makeStyles, responsiveFontSizes } from '@material-ui/core/styles'
 import green from '@material-ui/core/colors/green'
+// Local Imports
+import './App.css'
 import BioCard from './components/BioCard.jsx'
 import AppBar from './components/AppBar.jsx'
 import Projects from './components/Projects.jsx'
 import RepositoryList from './components/RepositoryList.jsx'
 import Contributions from './components/Contributions.jsx'
+import useSuperAgent from './components/hooks/UseSuperAgent'
 
 const Theme = responsiveFontSizes(
   createMuiTheme({
@@ -83,37 +86,34 @@ const lazyLoader = () => <CircularProgress style={{ justifySelf: 'center' }}/>
 
 function App () {
   const classes = useStyles()
+  const [data, isLoading, error] = useSuperAgent('https://s3-ap-southeast-2.amazonaws.com/github.noelsoong.com/data.json')
+  console.log(data, isLoading)
+  if (error) { return <div>{error}</div> }
   return (
     <ThemeProvider theme={Theme}>
-      {localStorage.token
-        ? <div className="App" style={{ textAlign: 'left' }}>
-          <AppBar/>
-          <Box className={classes.mainHeader} >
-            <Box className={classes.mainHeaderImageWrap}>
-              <Box className={classes.mainHeaderImage}>
-              </Box>
+      <div className="App" style={{ textAlign: 'left' }}>
+        <AppBar/>
+        <Box className={classes.mainHeader} >
+          <Box className={classes.mainHeaderImageWrap}>
+            <Box className={classes.mainHeaderImage}>
             </Box>
-            <Container>
-              <Grid className={classes.profile} container spacing={1}>
-                <Grid item xs={12} lg={3} md={4} sm={5}>
-                  <BioCard fallback={lazyLoader} />
-                </Grid>
-                <Grid item xs={12} lg={9} md={8} sm={7} >
-                  {/* <Grid container spacing={1}> */}
-                  {/* <Grid item xs={12} > */}
-                  <Contributions fallback={lazyLoader} />
-                  {/* </Grid> */}
-                  {/* </Grid> */}
-                </Grid>
-              </Grid>
-            </Container>
           </Box>
-          <Container className={classes.root} width={1} height={1} spacing={1}>
-            <Projects />
-            <RepositoryList fallback={lazyLoader} />
+          <Container>
+            <Grid className={classes.profile} container spacing={1}>
+              <Grid item xs={12} lg={3} md={4} sm={5}>
+                <BioCard fallback={lazyLoader} />
+              </Grid>
+              <Grid item xs={12} lg={9} md={8} sm={7} >
+                <Contributions data={data} isLoading={isLoading} fallback={lazyLoader} />
+              </Grid>
+            </Grid>
           </Container>
-        </div>
-        : <Redirect to='/' />}
+        </Box>
+        <Container className={classes.root} width={1} height={1} spacing={1}>
+          <Projects />
+          <RepositoryList isLoading={isLoading} data={data} fallback={lazyLoader}/>
+        </Container>
+      </div>
     </ThemeProvider>
   )
 }
