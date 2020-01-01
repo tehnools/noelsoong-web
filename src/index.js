@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './index.css'
 import App from './App'
-import LoadingView from './components/LoadingView.jsx'
 import * as serviceWorker from './serviceWorker'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { client } from './apollo/client'
@@ -12,12 +11,8 @@ ReactDOM.render(
   <ApolloProvider client={client}>
     <Router>
       <Route exact path='/' >
-        <LoadingView/>
-      </Route>
-      <Route exact path='/home' >
         <App/>
       </Route>
-
     </Router>
   </ApolloProvider>, document.getElementById('root'))
 
