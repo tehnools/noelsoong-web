@@ -13,8 +13,7 @@ import RepositoryCard from './RepositoryCard.jsx'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex',
-    padding: theme.spacing(1)
+    display: 'flex'
   },
   headerBox:
   {
@@ -63,7 +62,7 @@ const GridItem = props => <Grid
 
 export default function RepositoryList (props) {
   const classes = useStyles()
-  const [checked, setChecked] = React.useState(true)
+  const [checked, setChecked] = React.useState(false)
   const { data, isLoading } = props
 
   const handleChecked = () => {
@@ -89,24 +88,22 @@ export default function RepositoryList (props) {
         isLoading ? <Box className={classes.loaderBox}>
           {props.fallback()}
         </Box>
-          : <Box className={classes.root}>
-            <Grid container
-              alignItems='flex-start'
-              wrap='wrap'
-              xl='auto'
-              spacing={1}
-            >
-              {data && data.data
-                .user
-                .pinnableItems
-                .nodes
-                .map(repo => <GridItem
-                  key={JSON.stringify(repo)}
-                  repo={repo}
-                  checked={checked} />)
-              }
-            </Grid>
-          </Box>
+          : <Grid container
+            alignItems='flex-start'
+            wrap='wrap'
+            xl='auto'
+            spacing={1}
+          >
+            {data && data.data
+              .user
+              .pinnableItems
+              .nodes
+              .map(repo => <GridItem
+                key={JSON.stringify(repo)}
+                repo={repo}
+                checked={checked} />)
+            }
+          </Grid>
       }
       <Divider className={classes.hr}/>
     </>
