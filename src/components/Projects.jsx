@@ -51,6 +51,12 @@ const projects = [
 ]
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(2)
+  },
+  hidden: {
+    display: 'none'
+  },
   headerBox:
   {
     display: 'flex',
@@ -76,7 +82,7 @@ function Projects (props) {
     setChecked(prev => !prev)
   }
   return (
-    <>
+    <Box className={classes.root}>
       <Box className={classes.headerBox} >
         <Typography
           variant='h3'
