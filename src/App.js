@@ -7,7 +7,6 @@ import {
   Container,
   CircularProgress
 } from '@material-ui/core'
-import { Redirect } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/styles'
 import { makeStyles, responsiveFontSizes } from '@material-ui/core/styles'
 import green from '@material-ui/core/colors/green'
@@ -87,8 +86,7 @@ const lazyLoader = () => <CircularProgress style={{ justifySelf: 'center' }}/>
 function App () {
   const classes = useStyles()
   const [data, isLoading, error] = useSuperAgent('https://s3-ap-southeast-2.amazonaws.com/github.noelsoong.com/data.json')
-  console.log(data, isLoading)
-  if (error) { return <div>{error}</div> }
+  if (error) { return alert(error) }
   return (
     <ThemeProvider theme={Theme}>
       <div className="App" style={{ textAlign: 'left' }}>
