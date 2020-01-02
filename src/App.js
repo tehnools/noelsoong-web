@@ -58,6 +58,9 @@ const Theme = responsiveFontSizes(
 const background = 'nz-mountains.jpg'
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(1)
+  },
   profile: {
     position: 'relative',
     zIndex: 99,
