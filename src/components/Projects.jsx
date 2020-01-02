@@ -21,18 +21,18 @@ const projects = [
     github: 'https://github.com/openlawnz/openlawnz-web'
   },
   {
-    name: 'Swipable Cards',
-    description: 'On my journey to create a tinder application. I created a Component that handles swipe events.',
-    imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/swipablecards.jpg',
-    link: 'https://csb-dm1kh.netlify.com/',
-    github: 'https://github.com/tehnools/swipable-cards'
-  },
-  {
     name: 'Majestic Travels',
     description: 'I have setup a static site to display the information for now but the project will have authorization of users as well as bookings. Plan is to use a tourwriter API',
     imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/majesticsights.jpg',
     link: 'https://www.majesticsightstravel.com/',
     github: 'https://github.com/justinsoong/majesticsights-marketing'
+  },
+  {
+    name: 'Swipable Cards',
+    description: 'On my journey to create a tinder application. I created a Component that handles swipe events.',
+    imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/swipablecards.jpg',
+    link: 'https://csb-dm1kh.netlify.com/',
+    github: 'https://github.com/tehnools/swipable-cards'
   },
   {
     name: 'Google Calculator Clone',
