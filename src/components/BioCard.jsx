@@ -23,6 +23,14 @@ const useStyles = makeStyles(theme => ({
   contactDetails: {
     margin: '0.75rem 0 0 0'
   },
+  paragraph: {
+    fontFamily: 'Roboto',
+    textOverflow: 'wrap',
+    fontWeight: 300,
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1)
+
+  },
   information: {
     display: 'flex',
     padding: '0.25rem 0 0.25rem 0',
@@ -74,11 +82,15 @@ export default function BioCard () {
           </Box>
         </Typography>
         <Typography component='div' variant='body1' className={classes.contactDetails}>
+          <Box className={classes.paragraph} textAlign='left'>
+            Young Passionate developer with 2 years experience. Willing to learn new technologies and find new challenges.
+          </Box>
           <Box className={classes.information} textAlign='left'>
             <RoomOutlinedIcon className={classes.icon} /> Auckland, New Zealand
           </Box>
           <Box className={classes.information} textAlign='left'>
-            <EmailOutlinedIcon className={classes.icon} /> noelsoongdev@gmail.com</Box>
+            <EmailOutlinedIcon className={classes.icon} /> noelsoongdev@gmail.com
+          </Box>
         </Typography>
         <BioActions />
       </CardContent>
