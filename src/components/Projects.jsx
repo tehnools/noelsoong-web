@@ -61,7 +61,6 @@ const useStyles = makeStyles(theme => ({
   {
     display: 'flex',
     justifyContent: 'space-between',
-    padding: theme.spacing(2),
     alignItems: 'center'
   },
   header3: {
@@ -117,7 +116,7 @@ function Projects (props) {
                   unmountOnExit
                   in={checked}
                   style={{ transformOrigin: '0 0 0' }}
-                  {...(checked ? { timeout: 1000 } : {})}
+                  {...(checked ? { timeout: 1000, classname: classes.hidden } : {})}
                 >
                   <Grid
                     item
@@ -130,7 +129,7 @@ function Projects (props) {
           )}
       </Grid>
       <Divider className={classes.hr} />
-    </>
+    </Box>
   )
 }
 
