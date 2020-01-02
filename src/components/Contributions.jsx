@@ -35,7 +35,7 @@ export default function Contributions (props) {
               {data && data.data.user.contributionsCollection.contributionCalendar.totalContributions}
             </Typography>
             <Typography component="p" >
-        Total Contributions this year
+              Total Contributions in a year
             </Typography>
           </>
       }
