@@ -65,7 +65,11 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     zIndex: 99,
     bottom: 200,
-    marginBottom: -200
+    marginBottom: -200,
+    [theme.breakpoints.width('sm')]: {
+      bottom: 300,
+      marginBottom: -300
+    }
   },
   mainHeaderImageWrap: {
     width: '100%',
