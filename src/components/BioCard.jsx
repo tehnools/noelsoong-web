@@ -83,7 +83,7 @@ export default function BioCard () {
         </Typography>
         <Typography component='div' variant='body1' className={classes.contactDetails}>
           <Box className={classes.paragraph} textAlign='left'>
-            Young Passionate developer with 2 years experience. Willing to learn new technologies and find new challenges.
+            Passionate developer with 2 years of experience. Willing to learn new technologies and find new challenges.
           </Box>
           <Box className={classes.information} textAlign='left'>
             <RoomOutlinedIcon className={classes.icon} /> Auckland, New Zealand
