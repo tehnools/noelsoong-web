@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/59245d82-c2de-4631-8d12-322b31413553/deploy-status)](https://app.netlify.com/sites/noelsoong/deploys)
+
 # About
 This is a portfolio page showcasing my contributions as well as personal projects
 
