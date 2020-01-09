@@ -57,6 +57,9 @@ const useStyles = makeStyles(theme => ({
   hidden: {
     display: 'none'
   },
+  gridItem: {
+    paddingTop: theme.spacing(1)
+  },
   headerBox:
   {
     display: 'flex',
@@ -74,7 +77,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-function Projects (props) {
+function Projects () {
   const classes = useStyles()
   const [checked, setChecked] = React.useState(true)
   const handleChecked = () => {
@@ -120,6 +123,7 @@ function Projects (props) {
                 >
                   <Grid
                     item
+                    className={classes.gridItem}
                   >
                     <Project
                       project={project} />
