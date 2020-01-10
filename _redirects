@@ -1,0 +1,12 @@
+# These rules will change if you change your site’s custom domains or HTTPS settings
+
+# Redirect domain aliases to primary domain
+https://cpanel.noelsoong.com/* https://www.noelsoong.com/:splat 301!
+https://cpcalendars.noelsoong.com/* https://www.noelsoong.com/:splat 301!
+https://cpcontacts.noelsoong.com/* https://www.noelsoong.com/:splat 301!
+https://webdisk.noelsoong.com/* https://www.noelsoong.com/:splat 301!
+https://webmail.noelsoong.com/* https://www.noelsoong.com/:splat 301!
+https://whm.noelsoong.com/* https://www.noelsoong.com/:splat 301!
+
+# Optional: Redirect default Netlify subdomain to primary domain
+https://noelsoong.netlify.com/* https://www.noelsoong.com/:splat 301!
