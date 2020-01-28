@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core'
 
 import GitHubIcon from '@material-ui/icons/GitHub'
+import ShopIcon from '@material-ui/icons/Shop'
 
 const useStyles = makeStyles(theme => ({
   media: {
@@ -40,7 +41,8 @@ export default function Project (props) {
     description,
     imgUrl,
     link,
-    github
+    github,
+    isPlayStore
   } = props.project
   return (
     <Card
@@ -67,6 +69,12 @@ export default function Project (props) {
         <IconButton href={github}>
           <GitHubIcon />
         </IconButton>
+        {isPlayStore
+          ? <IconButton href={link}>
+            <ShopIcon />
+          </IconButton>
+          : null}
+
       </CardActions>
     </Card>
   )

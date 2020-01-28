@@ -14,6 +14,14 @@ import Project from './Project.jsx'
 
 const projects = [
   {
+    name: 'Swim Safe',
+    description: 'I developed a port of Aucland Council\'s Safe Swim web App. I am continuously updating it to meet mvp and add new features.',
+    imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/swimsafe_s9.jpg',
+    link: 'https://play.google.com/store/apps/details?id=com.noelsoong.swimsafe',
+    github: 'https://github.com/tehnools/swimsafe',
+    isPlayStore: true
+  },
+  {
     name: 'Openlaw NZ',
     description: 'I developed the GraphQL API as well as deployed it in AWS EC2. Still doing contracts for Open Law NZ to improve the development and user experience',
     imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/openlawnz.jpg',
