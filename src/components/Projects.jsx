@@ -15,7 +15,7 @@ import Project from './Project.jsx'
 const projects = [
   {
     name: 'Swim Safe',
-    description: 'I developed a port of Aucland Council\'s Safe Swim web App. I am continuously updating it to meet mvp and add new features.',
+    description: 'Developing a mobile application that will will inform swimmers of water hazards around Auckland\'s waters.',
     imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/swimsafe_s9.jpg',
     link: 'https://play.google.com/store/apps/details?id=com.noelsoong.swimsafe',
     github: 'https://github.com/tehnools/swimsafe',
@@ -23,35 +23,35 @@ const projects = [
   },
   {
     name: 'Openlaw NZ',
-    description: 'I developed the GraphQL API as well as deployed it in AWS EC2. Still doing contracts for Open Law NZ to improve the development and user experience',
+    description: 'Open Law NZ is an opensource research platform with over 33 thousand cases and riseing. I am developing to improve the backend and frontend using Node, GraphQL and .NET.',
     imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/openlawnz.jpg',
     link: 'https://www.openlaw.nz/',
     github: 'https://github.com/openlawnz/openlawnz-web'
   },
   {
     name: 'Majestic Travels',
-    description: 'I have setup a static site to display the information for now but the project will have authorization of users as well as bookings. Plan is to use a tourwriter API',
+    description: 'Developing a tour booking site for Majestic Travels to allow users to select tour packages around New Zealand and book them.',
     imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/majesticsights.jpg',
     link: 'https://www.majesticsightstravel.com/',
     github: 'https://github.com/justinsoong/majesticsights-marketing'
   },
   {
     name: 'Swipable Cards',
-    description: 'On my journey to create a tinder application. I created a Component that handles swipe events.',
+    description: 'Developing a React Web module for developers to handle swipe events both web and mobile devices.',
     imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/swipablecards.jpg',
     link: 'https://csb-dm1kh.netlify.com/',
     github: 'https://github.com/tehnools/swipable-cards'
   },
   {
     name: 'Google Calculator Clone',
-    description: 'Remake of google calculator. It\'s pure javascript and css with a history button.',
+    description: 'Remake of the Google Calculator with history to allow users to view old calculations.',
     imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/calculator.jpg',
     link: 'https://tehnools.github.io/calculator/',
     github: 'https://github.com/tehnools/calculator'
   },
   {
     name: 'Minesweeper',
-    description: 'Simple Minesweeper game I was tasked to create at Dev Academy. It comes with an unexpected twist.',
+    description: 'MineSweeper game that has a difficulty selector. It has an interesting twist when you loose.',
     imgUrl: 'https://s3-ap-southeast-2.amazonaws.com/noelsoong.com/minesweeper.jpg',
     link: 'https://tehnools.github.io/minesweeper/',
     github: 'https://github.com/tehnools/minesweeper'
