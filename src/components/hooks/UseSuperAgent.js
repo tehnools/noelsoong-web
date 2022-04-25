@@ -6,7 +6,7 @@ const useSuperAgent = (url, options) => {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
 
-  const fetchData = async url => {
+  const fetchData = async (url) => {
     try {
       setIsLoading(true)
       const res = await request.get(url)
@@ -18,7 +18,9 @@ const useSuperAgent = (url, options) => {
     }
   }
 
-  useEffect(() => { fetchData(url) }, [])
+  useEffect(() => {
+    fetchData(url)
+  }, [])
 
   return [data, isLoading, error, fetchData]
 }

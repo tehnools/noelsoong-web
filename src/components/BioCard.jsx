@@ -10,7 +10,7 @@ import BioActions from './BioActions.jsx'
 import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined'
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   header: {
     fontFamily: 'Roboto',
     fontWeight: 700
@@ -29,7 +29,6 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 300,
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(1)
-
   },
   information: {
     display: 'flex',
@@ -66,35 +65,39 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function BioCard () {
+export default function BioCard() {
   const classes = useStyles()
   return (
-    <Card className={classes.card} shadow={1} >
+    <Card className={classes.card} shadow={1}>
       <CardContent>
-        <Typography variant='h2' color="primary" component='div'>
-          <Box className={classes.header} textAlign='left'>
-              NOEL SOONG
+        <Typography variant="h2" color="primary" component="div">
+          <Box className={classes.header} textAlign="left">
+            NOEL SOONG
           </Box>
         </Typography>
-        <Typography variant='h3' color="primary" component='div'>
-          <Box className={classes.header2} textAlign='left'>
-              tehnools
+        <Typography variant="h3" color="primary" component="div">
+          <Box className={classes.header2} textAlign="left">
+            tehnools
           </Box>
         </Typography>
-        <Typography component='div' variant='body1' className={classes.contactDetails}>
-          <Box className={classes.paragraph} textAlign='left'>
-            Passionate developer with 2 years of experience. Willing to learn new technologies and find new challenges.
+        <Typography
+          component="div"
+          variant="body1"
+          className={classes.contactDetails}>
+          <Box className={classes.paragraph} textAlign="left">
+            Passionate developer with 2 years of experience. Willing to learn
+            new technologies and find new challenges.
           </Box>
-          <Box className={classes.information} textAlign='left'>
+          <Box className={classes.information} textAlign="left">
             <RoomOutlinedIcon className={classes.icon} /> Auckland, New Zealand
           </Box>
-          <Box className={classes.information} textAlign='left'>
-            <EmailOutlinedIcon className={classes.icon} /> noelsoongdev@gmail.com
+          <Box className={classes.information} textAlign="left">
+            <EmailOutlinedIcon className={classes.icon} />{' '}
+            noelsoongdev@gmail.com
           </Box>
         </Typography>
         <BioActions />
       </CardContent>
-
     </Card>
   )
 }

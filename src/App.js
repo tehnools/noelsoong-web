@@ -57,7 +57,7 @@ const Theme = responsiveFontSizes(
 
 const background = 'nz-mountains.jpg'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(1)
   },
@@ -88,35 +88,46 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const lazyLoader = () => <CircularProgress style={{ justifySelf: 'center' }}/>
+const lazyLoader = () => <CircularProgress style={{ justifySelf: 'center' }} />
 
-function App () {
+function App() {
   const classes = useStyles()
-  const [data, isLoading, error] = useSuperAgent('https://s3-ap-southeast-2.amazonaws.com/github.noelsoong.com/data.json')
-  if (error) { return alert(error) }
+  const [data, isLoading, error] = useSuperAgent(
+    'https://s3-ap-southeast-2.amazonaws.com/github.noelsoong.com/data.json'
+  )
+  if (error) {
+    return alert(error)
+  }
   return (
     <ThemeProvider theme={Theme}>
       <div className="App" style={{ textAlign: 'left' }}>
-        <AppBar/>
-        <Box className={classes.mainHeader} >
+        <AppBar />
+        <Box className={classes.mainHeader}>
           <Box className={classes.mainHeaderImageWrap}>
-            <Box className={classes.mainHeaderImage}>
-            </Box>
+            <Box className={classes.mainHeaderImage}></Box>
           </Box>
           <Container>
             <Grid className={classes.profile} container spacing={1}>
               <Grid item xs={12} lg={3} md={4} sm={5}>
                 <BioCard fallback={lazyLoader} />
               </Grid>
-              <Grid item xs={12} lg={9} md={8} sm={7} >
-                <Contributions data={data} isLoading={isLoading} fallback={lazyLoader} />
+              <Grid item xs={12} lg={9} md={8} sm={7}>
+                <Contributions
+                  data={data}
+                  isLoading={isLoading}
+                  fallback={lazyLoader}
+                />
               </Grid>
             </Grid>
           </Container>
         </Box>
         <Container className={classes.root} width={1} height={1} spacing={1}>
           <Projects />
-          <RepositoryList isLoading={isLoading} data={data} fallback={lazyLoader}/>
+          <RepositoryList
+            isLoading={isLoading}
+            data={data}
+            fallback={lazyLoader}
+          />
         </Container>
       </div>
     </ThemeProvider>

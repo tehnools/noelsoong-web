@@ -9,7 +9,7 @@ import {
   Typography
 } from '@material-ui/core'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   link: {
     textDecoration: 'none',
     '&:visited': {
@@ -45,28 +45,33 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function RepositoryCard ({ repo }) {
+export default function RepositoryCard({ repo }) {
   const classes = useStyles()
-  return <Grid item >
-    <Card className={classes.card} >
-      <CardContent className={classes.content} >
-        <Typography variant='h6' color='primary' >
-          <a className={classes.mainLink} href={repo.url}>
-            {repo.name}
-          </a>
-        </Typography>
-        <Typography variant='subtitle1' color='secondary' >
-          <a className={classes.link} href={repo.owner.url} >
-            {repo.owner.login}
-          </a>
-        </Typography>
-        <Typography variant='subtitle2' color='textSecondary'>
-          {repo.primaryLanguage.name}
-        </Typography>
-      </CardContent>
-      <Link href={repo.owner.url}>
-        <CardMedia className={classes.gitAvatar} image={repo.openGraphImageUrl} />
-      </Link>
-    </Card>
-  </Grid>
+  return (
+    <Grid item>
+      <Card className={classes.card}>
+        <CardContent className={classes.content}>
+          <Typography variant="h6" color="primary">
+            <a className={classes.mainLink} href={repo.url}>
+              {repo.name}
+            </a>
+          </Typography>
+          <Typography variant="subtitle1" color="secondary">
+            <a className={classes.link} href={repo.owner.url}>
+              {repo.owner.login}
+            </a>
+          </Typography>
+          <Typography variant="subtitle2" color="textSecondary">
+            {repo.primaryLanguage.name}
+          </Typography>
+        </CardContent>
+        <Link href={repo.owner.url}>
+          <CardMedia
+            className={classes.gitAvatar}
+            image={repo.openGraphImageUrl}
+          />
+        </Link>
+      </Card>
+    </Grid>
+  )
 }

@@ -2,12 +2,8 @@ import React from 'react'
 import d3 from 'd3'
 import UseQuery from '../apollo/UseQuery'
 
-export default function LanguageStats () {
-  return (
-    <div>
-
-    </div>
-  )
+export default function LanguageStats() {
+  return <div></div>
 }
 
 // {

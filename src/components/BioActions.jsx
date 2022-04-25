@@ -2,14 +2,9 @@ import React from 'react'
 import LinkedInIcon from '@material-ui/icons/LinkedIn'
 import GitHubIcon from '@material-ui/icons/GitHub'
 
-import {
-  CardActions,
-  Box,
-  Button,
-  makeStyles
-} from '@material-ui/core'
+import { CardActions, Box, Button, makeStyles } from '@material-ui/core'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   header: {
     fontWeight: 700,
     lineHeight: '2.1rem'
@@ -59,31 +54,29 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function BioActions () {
+export default function BioActions() {
   const classes = useStyles()
   return (
     <CardActions className={classes.buttonActions}>
-      <Box m={0} p={0} >
+      <Box m={0} p={0}>
         <Button
           className={`${classes.button} ${classes.buttonThird}`}
-          color='default'
-          variant='contained'
-          size='medium'
-          startIcon={<GitHubIcon/>}
-          href='https://github.com/tehnools'
-          fullWidth
-        >
+          color="default"
+          variant="contained"
+          size="medium"
+          startIcon={<GitHubIcon />}
+          href="https://github.com/tehnools"
+          fullWidth>
           GitHub
         </Button>
         <Button
           className={`${classes.button}`}
           variant="contained"
-          color='primary'
-          size='medium'
+          color="primary"
+          size="medium"
           startIcon={<LinkedInIcon />}
-          href='https://www.linkedin.com/in/noel-soong/'
-          fullWidth
-        >
+          href="https://www.linkedin.com/in/noel-soong/"
+          fullWidth>
           LinkedIn
         </Button>
       </Box>

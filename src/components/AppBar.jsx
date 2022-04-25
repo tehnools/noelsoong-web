@@ -1,12 +1,9 @@
 import React from 'react'
-import {
-  Container,
-  makeStyles
-} from '@material-ui/core'
+import { Container, makeStyles } from '@material-ui/core'
 import Bar from '@material-ui/core/AppBar'
 import Typography from '@material-ui/core/Typography'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   appBar: {
     zIndex: 999,
     position: 'absolute',
@@ -24,13 +21,13 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function AppBar () {
+export default function AppBar() {
   const classes = useStyles()
 
   return (
     <Bar className={classes.appBar} position="static">
       <Container>
-        <Typography className={classes.header} variant="h2" component='h2'>
+        <Typography className={classes.header} variant="h2" component="h2">
           N.
         </Typography>
       </Container>
