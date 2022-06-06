@@ -2,7 +2,7 @@
 import React from 'react'
 import {
   Grid,
-  createMuiTheme,
+  createTheme,
   Box,
   Container,
   CircularProgress
@@ -20,7 +20,7 @@ import Contributions from './components/Contributions.jsx'
 import useSuperAgent from './components/hooks/UseSuperAgent'
 
 const Theme = responsiveFontSizes(
-  createMuiTheme({
+  createTheme({
     text: {
       h1: { fontFamily: 'Roboto' },
       h2: { fontFamily: 'Roboto' },
