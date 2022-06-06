@@ -95,6 +95,7 @@ function App() {
   const [data, isLoading, error] = useSuperAgent(
     'https://s3-ap-southeast-2.amazonaws.com/github.noelsoong.com/data.json'
   )
+
   if (error) {
     return alert(error)
   }

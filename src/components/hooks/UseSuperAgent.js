@@ -1,28 +1,26 @@
 const request = require('superagent')
 const { useState, useEffect } = require('react')
 
-const useSuperAgent = (url, options) => {
+const useSuperAgent = (url) => {
   const [data, setData] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
 
-  const fetchData = async (url) => {
-    try {
-      setIsLoading(true)
-      const res = await request.get(url)
-      setData(res.body)
-    } catch (err) {
-      setError(err)
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
   useEffect(() => {
-    fetchData(url)
-  }, [])
+    (async () => {
+      try {
+        setIsLoading(true)
+        const res = await request.get(url)
+        setData(res.body)
+      } catch (err) {
+        setError(err)
+      } finally {
+        setIsLoading(false)
+      }
+    })()
+  }, []) //eslint-disable-line 
 
-  return [data, isLoading, error, fetchData]
+  return [data, isLoading, error]
 }
 
 export default useSuperAgent
