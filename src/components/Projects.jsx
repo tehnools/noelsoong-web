@@ -129,7 +129,7 @@ function Projects() {
               in={checked}
               style={{ transformOrigin: '0 0 0' }}
               {...(checked
-                ? { timeout: 1000, classname: classes.hidden }
+                ? { timeout: 1000, className: classes.hidden }
                 : {})}>
               <Grid item className={classes.gridItem}>
                 <Project project={project} />
