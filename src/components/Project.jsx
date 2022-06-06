@@ -14,7 +14,7 @@ import {
 import GitHubIcon from '@material-ui/icons/GitHub'
 import ShopIcon from '@material-ui/icons/Shop'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   media: {
     height: 300,
     width: '100%',
@@ -31,50 +31,29 @@ const useStyles = makeStyles(theme => ({
     height: 100,
     wordWrap: 'break-word'
   }
-})
-)
+}))
 
-export default function Project (props) {
+export default function Project(props) {
   const classes = useStyles()
-  const {
-    name,
-    description,
-    imgUrl,
-    link,
-    github,
-    isPlayStore
-  } = props.project
+  const { name, description, imgUrl, link, github, isPlayStore } = props.project
   return (
-    <Card
-      className={classes.root}
-    >
-      <CardHeader
-        title={name}
-      />
-      <CardActionArea
-        href={link}
-      >
-        <CardMedia
-          className={classes.media}
-          image={imgUrl}
-          title={name}
-        />
+    <Card className={classes.root}>
+      <CardHeader title={name} />
+      <CardActionArea href={link}>
+        <CardMedia className={classes.media} image={imgUrl} title={name} />
       </CardActionArea>
       <CardContent className={classes.content}>
-        <Typography variant='body1'>
-          {description}
-        </Typography>
+        <Typography variant="body1">{description}</Typography>
       </CardContent>
       <CardActions>
         <IconButton href={github}>
           <GitHubIcon />
         </IconButton>
-        {isPlayStore
-          ? <IconButton href={link}>
+        {isPlayStore ? (
+          <IconButton href={link}>
             <ShopIcon />
           </IconButton>
-          : null}
-
+        ) : null}
       </CardActions>
     </Card>
   )
